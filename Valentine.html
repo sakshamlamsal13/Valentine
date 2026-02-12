@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Be My Valentine?</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom right, #ff9a9e, #fad0c4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  width: 320px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+h1 {
+  color: #ff4b7d;
+  font-size: 22px;
+}
+
+img {
+  width: 150px;
+  margin: 15px 0;
+}
+
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+#yesBtn { background: #4CAF50; color: white; }
+#noBtn { background: #ff4b5c; color: white; }
+
+.message {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #ff4b7d;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Hey YourLove 💖<br>Will You Be My Valentine?</h1>
+  <img src="https://i.imgur.com/6RMhx.gif" alt="Cute Bear">
+
+  <div>
+    <button id="yesBtn" onclick="sayYes()">YES 💕</button>
+    <button id="noBtn" onclick="clickNo()">No 😢</button>
+  </div>
+
+  <div class="message" id="msg"></div>
+</div>
+
+<script>
+let noClickCount = 0;
+
+const messages = [
+  "Are you sure? 🥺",
+  "Think again... 💔",
+  "I'll be very sad 😭",
+  "Really really sure? 😢",
+  "Last chance 😔"
+];
+
+function clickNo() {
+  const msg = document.getElementById("msg");
+  const yesBtn = document.getElementById("yesBtn");
+  const noBtn = document.getElementById("noBtn");
+
+  if (noClickCount < messages.length) {
+    msg.innerHTML = messages[noClickCount];
+  } else {
+    msg.innerHTML = "Okay okay… YES it is 😍";
+    noBtn.style.display = "none";
+  }
+
+  yesBtn.style.fontSize = (16 + noClickCount * 3) + "px";
+  noClickCount++;
+}
+
+function sayYes() {
+  const siteLink = "YOUR_WEBSITE_LINK_HERE";
+
+  document.body.innerHTML = `
+    <div style="
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      height:100vh;
+      text-align:center;
+      background:linear-gradient(to bottom right,#ff9a9e,#fad0c4);
+      padding:20px;
+    ">
+      <h1 style="color:white;">YAYYYY 💖😍</h1>
+      <p style="color:white;font-size:18px;">
+        Best YES ever 🥰
+      </p>
+
+      <!-- FIXED PHOTO -->
+      <img src="photo3.jpg"
+           style="width:220px;border-radius:20px;margin:15px 0;">
+
+      <p style="color:white;">Scan to share 💌</p>
+
+      <!-- QR CODE -->
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${siteLink}"
+           alt="QR Code">
+    </div>
+  `;
+}
+</script>
+
+</body>
+</html>
